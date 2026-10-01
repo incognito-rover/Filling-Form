@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Job Form Filler",
+  "version": "0.1.0",
+  "description": "Fill job application forms from a saved profile with one click.",
+  "action": { "default_popup": "popup.html", "default_title": "Fill this application" },
+  "permissions": ["storage", "activeTab", "scripting"]
+}

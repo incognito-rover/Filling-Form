@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Job Form Filler</title>
+<style>
+  :root {
+    --ink: #1d2733; --muted: #5d6b7a; --line: #cfd8e0;
+    --bg: #f7f9fb; --accent: #1f5f8b; --accent-ink: #fff; --ok: #1f7a4d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e6edf3; --muted: #92a1b1; --line: #33414f; --bg: #17202a; --accent: #5aa9e0; --accent-ink: #0c1620; --ok: #4cc38a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; width: 380px; font: 13px/1.4 system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+  header { padding: 14px 16px 10px; }
+  h1 { font-size: 16px; margin: 0 0 2px; }
+  header p { margin: 0; color: var(--muted); }
+  .fill { display: block; width: calc(100% - 32px); margin: 0 16px 8px; padding: 10px; font: inherit; font-weight: 600;
+          color: var(--accent-ink); background: var(--accent); border: 0; border-radius: 6px; cursor: pointer; }
+  .fill:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #status { margin: 0 16px 10px; min-height: 18px; color: var(--muted); }
+  #status.ok { color: var(--ok); }
+  details { border-top: 1px solid var(--line); }
+  summary { padding: 10px 16px; cursor: pointer; font-weight: 600; }
+  form { padding: 0 16px 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-height: 320px; overflow-y: auto; }
+  label { display: grid; gap: 2px; color: var(--muted); font-size: 12px; }
+  label.wide { grid-column: 1 / -1; }
+  input, textarea { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 6px; }
+  textarea { resize: vertical; min-height: 60px; }
+  .save { grid-column: 1 / -1; padding: 8px; font: inherit; font-weight: 600; color: var(--ink); background: transparent;
+          border: 1px solid var(--line); border-radius: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Job Form Filler</h1>
+    <p>Fills the application on the current tab. You review and submit.</p>
+  </header>
+  <button class="fill" id="fill">Fill this page</button>
+  <div id="status" role="status"></div>
+
+  <details id="profile-section">
+    <summary>Your profile</summary>
+    <form id="profile"></form>
+  </details>
+  <script src="popup.js"></script>
+</body>
+</html>
